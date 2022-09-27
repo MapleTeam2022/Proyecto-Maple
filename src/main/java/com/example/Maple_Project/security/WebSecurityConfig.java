@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +28,17 @@ public class WebSecurityConfig implements UserDetailsService {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable().
-                authorizeHttpRequests((requests) -> requests
+        http.csrf().disable()
+                .authorizeHttpRequests()
                         .antMatchers("/", "/home", "/**/*.js", "/**/*.css","/login/registro","/login/postregistro").permitAll()
-                        .anyRequest().authenticated()
-                ).oauth2Login()
+                        .anyRequest().authenticated().and()
+                .oauth2Login().loginPage("/login/login").defaultSuccessUrl("/login/inicio",true)
                 .and()
-                .formLogin((form) -> form
+                .formLogin()
                         .loginPage("/login/login")
                         .permitAll().defaultSuccessUrl("/login/inicio",true)
-                )
-                .logout((logout) -> logout.permitAll());
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/login/login"));
 
         return http.build();
     }
