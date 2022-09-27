@@ -14,7 +14,7 @@
 	<name>Maple_Project</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>1.7</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -97,7 +97,7 @@
 						<configuration>
 							<additionalProperties>
 								<encoding.source>${project.build.sourceEncoding}</encoding.source>
-								<encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
+								<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 								<java.source>${maven.compiler.source}</java.source>
 								<java.target>${maven.compiler.target}</java.target>
 							</additionalProperties>
