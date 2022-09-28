@@ -14,7 +14,7 @@
 	<name>mapleproject</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -55,12 +55,6 @@
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 			<version>1.6.2</version>
-			<scope>import</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>Maple_Project</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 			<scope>import</scope>
 		</dependency>
 		<dependency>
