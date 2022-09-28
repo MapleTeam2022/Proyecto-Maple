@@ -38,7 +38,7 @@ public class WebSecurityConfig implements UserDetailsService {
                 .loginPage("/login/login")
                 .permitAll().defaultSuccessUrl("/login/inicio",true)
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/login/login"));
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
         return http.build();
     }
