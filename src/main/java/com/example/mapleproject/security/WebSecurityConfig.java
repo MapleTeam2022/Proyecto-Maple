@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import com.example.mapleproject.controllers.LogoutHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,11 @@ import java.util.List;
 @EnableWebSecurity
 public class WebSecurityConfig implements UserDetailsService {
 
+    private final LogoutHandler logoutHandler;
+
+    public WebSecurityConfig(LogoutHandler logoutHandler) {
+        this.logoutHandler = logoutHandler;
+    }
     @Autowired
     private UsuarioService service;
 
@@ -38,7 +44,8 @@ public class WebSecurityConfig implements UserDetailsService {
                 .loginPage("/login/login")
                 .permitAll().defaultSuccessUrl("/login/inicio",true)
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .addLogoutHandler(logoutHandler);
 
         return http.build();
     }
