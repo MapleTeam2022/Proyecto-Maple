@@ -49,10 +49,10 @@ public class LoginController {
         }
     }
 
-    /*@GetMapping("errorindex")
+    @GetMapping("errorindex")
     public String errorindex() {
         return "inicio/404";
-    }*/
+    }
 
     //Para pasar datos del controlador a la vista, necesitamos declarar un Modelo, en este caso el parametro empresas
     @GetMapping("registro")

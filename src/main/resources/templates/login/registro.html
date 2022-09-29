@@ -38,7 +38,7 @@
             <form action="/login/postregistro" method="post" class="user">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <select name="codEmpresa" class="form-control">
+                  <select name="Empresa" class="form-control">
                     <option>Seleccione la empresa</option>
                     <option th:each="mov : ${misempresas}" th:value="${mov.id}" th:text="${mov.nombre}"></option>
                   </select>
